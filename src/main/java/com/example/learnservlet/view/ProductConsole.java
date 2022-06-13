@@ -86,9 +86,8 @@ public class ProductConsole {
         String newDesc= sc.next();
         System.out.println("Enter price:");
         Double newPrice= Double.parseDouble(sc.next());
-        Product product=new Product(newName,newDesc,newPrice);
-        ProductController productController=new ProductController();
-        productController.createProduct(product);
+        ProductController createProductController=new ProductController();
+        createProductController.createProduct(newName,newDesc,newPrice);
     }
     private void deleteProduct(){
         System.out.println("Enter name product:");
@@ -109,16 +108,19 @@ public class ProductConsole {
         String newDesc= sc.next();
         System.out.println("Enter price:");
         Double newPrice= Double.parseDouble(sc.next());
-        Product product=new Product();
-        product.setProName(newName);
-        product.setProDesc(newDesc);
-        product.setPrice(newPrice);
+
+
         ProductController productController=new ProductController();
-        productController.updateProduct(product);
+        productController.updateProduct(newName,newDesc,newPrice);
     }
     private void getAll(){
-        ProductController productController=new ProductController();
-        productController.getAllProduct();
+        try {
+            ProductController productController=new ProductController();
+            productController.getAllProduct();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
     private void WriteFile(){
         ProductController productController=new ProductController();
